@@ -2,7 +2,7 @@
   "name": "chancify",
   "version": "0.1.0",
   "description": "a simple api for running javascript functions based upon percentage chance",
-  "main": "index.js",
+  "main": "dist/chancify.js",
   "scripts": {
     "build": "rm -rf ./dist && mkdir ./dist && rollup -c rollup.config.js",
     "lint": "eslint src/*.js",
