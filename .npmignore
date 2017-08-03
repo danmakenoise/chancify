@@ -4,4 +4,4 @@ src
 .flowconfig
 .gitignore
 README.md
-rollup.config.js
+rollup.basic.js
