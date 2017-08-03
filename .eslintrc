@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+  ],
+  "plugins": [
+    "flowtype",
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": [
+        "rollup.config.js"
+        "src/*.test.js",
+      ],
+    }],
+    "no-use-before-define": ["error", {
+      "functions": false,
+    }]
+  },
+}
