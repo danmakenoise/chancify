@@ -4,6 +4,7 @@
   "description": "a simple api for running javascript functions based upon percentage chance",
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf ./dist && mkdir ./dist && rollup -c rollup.config.js",
     "lint": "eslint src/*.js",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "babel-tape-runner ./src/*.test.js | faucet"
@@ -40,6 +41,10 @@
     "faucet": "0.0.1",
     "flow": "^0.2.3",
     "flow-bin": "^0.52.0",
+    "rollup": "^0.45.2",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-flow": "^1.1.1",
+    "rollup-plugin-uglify": "^2.0.1",
     "tape": "^4.8.0"
   }
 }
