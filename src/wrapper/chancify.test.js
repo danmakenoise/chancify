@@ -4,7 +4,7 @@ const chancify = require('./chancify');
 
 const TEST_COUNT = 10000;
 
-test('basic chancify()', (t): void => {
+test('wrapper chancify()', (t): void => {
   runChancifyTest(t, { runFor: 100, outOf: 100, variance: 0 });
   runChancifyTest(t, { runFor: 50, outOf: 100, variance: 100 });
   runChancifyTest(t, { runFor: 1, outOf: 100, variance: 100 });
@@ -25,10 +25,10 @@ function runChancifyTest(t: any, opts: RunChancifyTestOptsType): void {
 
 function getTestResult({ outOf, runFor }: RunChancifyTestOptsType): number {
   let actual = 0;
-  const testFunction = () => { actual += 1; };
+  const testFunction = chancify(() => { actual += 1; }, { outOf, runFor });
 
   for (let i = 0; i < TEST_COUNT; i += 1) {
-    chancify(testFunction, { outOf, runFor });
+    testFunction();
   }
 
   return actual;
