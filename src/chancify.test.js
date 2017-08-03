@@ -1,6 +1,6 @@
 // @flow
-import test from 'tape';
-import chancify from './chancify';
+const test = require('tape');
+const chancify = require('./chancify');
 
 const TEST_COUNT = 10000;
 

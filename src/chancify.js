@@ -15,4 +15,4 @@ function chancify(func: Function, opts: ChancifyOptsType): void {
   }
 }
 
-export default chancify;
+module.exports = chancify;

@@ -1,6 +1,6 @@
-import babel from 'rollup-plugin-babel';
-import flow from 'rollup-plugin-flow';
-import uglify from 'rollup-plugin-uglify';
+const babel = require('rollup-plugin-babel');
+const flow = require('rollup-plugin-flow');
+const uglify = require('rollup-plugin-uglify');
 
 const config = {
   entry: './src/chancify.js',
@@ -14,4 +14,4 @@ const config = {
   ]
 };
 
-export default config;
+module.exports = config;
