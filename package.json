@@ -1,0 +1,26 @@
+{
+  "name": "chancify",
+  "version": "0.1.0",
+  "description": "a simple api for running javascript functions based upon percentage chance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danmakenoise/chancify.git"
+  },
+  "keywords": [
+    "javascript",
+    "chance",
+    "percentage",
+    "random",
+    "functions"
+  ],
+  "author": "danmakenoise",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danmakenoise/chancify/issues"
+  },
+  "homepage": "https://github.com/danmakenoise/chancify#readme"
+}
