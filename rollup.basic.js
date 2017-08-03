@@ -3,14 +3,14 @@ const flow = require('rollup-plugin-flow');
 const uglify = require('rollup-plugin-uglify');
 
 const config = {
-  entry: './src/chancify.js',
+  entry: './src/basic/chancify.js',
   plugins: [
     flow(),
     babel(),
     uglify(),
   ],
   targets: [
-    { dest: './dist/chancify.js', format: 'cjs' },
+    { dest: './basic/index.js', format: 'cjs' },
   ]
 };
 
