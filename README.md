@@ -13,7 +13,8 @@ A simple API for wrapping javascript functions so they only run occasionally bas
 `percentChance` : `a decimal value between 0 and 1 indicating the percentage chance you would like the function to run with`
 
 
-## Example
+## Examples
+
 ```javascript
 const chancify = require('chancify');
 
@@ -24,4 +25,14 @@ function _foo() {
 const foo = chancify(_foo, 1 / 10);
 
 foo(); // 1 in 10 chance it will actually run!
+```
+
+```javascript
+const chancify = require('chancify');
+
+function bar() {
+  // baz
+}
+
+module.exports = chancify(bar, 50 / 100); // exported function will only run 50% of the time
 ```
