@@ -8,9 +8,9 @@ A simple API for wrapping javascript functions so they only run occasionally bas
 
 
 ## Arguments
-`func` : `a function you only want to run part of the time`
+`func` : A function you only want to run part of the time.
 
-`percentChance` : `a decimal value between 0 and 1 indicating the percentage chance you would like the function to run with`
+`percentChance` : A decimal value between 0 and 1 indicating the percentage chance you would like the function to run with.
 
 
 ## Examples
