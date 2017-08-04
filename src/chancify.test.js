@@ -4,11 +4,36 @@ const chancify = require('./chancify');
 
 const TEST_COUNT = 10000;
 
-test('wrapper chancify()', (t): void => {
+test('chancify() percentage tests', (t): void => {
   runChancifyTest(t, { chance: 100 / 100, variance: 0 });
   runChancifyTest(t, { chance: 50 / 100, variance: 100 });
   runChancifyTest(t, { chance: 1 / 100, variance: 100 });
   runChancifyTest(t, { chance: 0 / 100, variance: 100 });
+  t.end();
+});
+
+test('chancify() passes through arguments', (t): void => {
+  let actualX;
+  let actualY;
+  let actualZ;
+
+  const expectedX = 'x';
+  const expectedY = 1;
+  const expectedZ = ['more', 'tests', 'for', 'you'];
+
+  const func = (x, y, z) => {
+    actualX = x;
+    actualY = y;
+    actualZ = z;
+  };
+  const chancified = chancify(func, 100 / 100);
+
+  chancified(expectedX, expectedY, expectedZ);
+
+  t.deepEqual(actualX, expectedX, 'it passes on the first argument');
+  t.deepEqual(actualY, expectedY, 'it passes on the second argument');
+  t.deepEqual(actualZ, expectedZ, 'it passes on the third argument');
+
   t.end();
 });
 
