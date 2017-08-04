@@ -5,14 +5,14 @@ const chancify = require('./chancify');
 const TEST_COUNT = 10000;
 
 test('wrapper chancify()', (t): void => {
-  runChancifyTest(t, { runFor: 100, outOf: 100, variance: 0 });
-  runChancifyTest(t, { runFor: 50, outOf: 100, variance: 100 });
-  runChancifyTest(t, { runFor: 1, outOf: 100, variance: 100 });
-  runChancifyTest(t, { runFor: 0, outOf: 100, variance: 100 });
+  runChancifyTest(t, { chance: 100 / 100, variance: 0 });
+  runChancifyTest(t, { chance: 50 / 100, variance: 100 });
+  runChancifyTest(t, { chance: 1 / 100, variance: 100 });
+  runChancifyTest(t, { chance: 0 / 100, variance: 100 });
   t.end();
 });
 
-type RunChancifyTestOptsType = { outOf: number, runFor: number, variance: number };
+type RunChancifyTestOptsType = { chance: number, variance: number };
 
 function runChancifyTest(t: any, opts: RunChancifyTestOptsType): void {
   const actual = getTestResult(opts);
@@ -23,9 +23,9 @@ function runChancifyTest(t: any, opts: RunChancifyTestOptsType): void {
   );
 }
 
-function getTestResult({ outOf, runFor }: RunChancifyTestOptsType): number {
+function getTestResult({ chance }: RunChancifyTestOptsType): number {
   let actual = 0;
-  const testFunction = chancify(() => { actual += 1; }, { outOf, runFor });
+  const testFunction = chancify(() => { actual += 1; }, chance);
 
   for (let i = 0; i < TEST_COUNT; i += 1) {
     testFunction();
@@ -35,14 +35,14 @@ function getTestResult({ outOf, runFor }: RunChancifyTestOptsType): number {
 }
 
 function assertTestResult(actual: number, opts: RunChancifyTestOptsType): boolean {
-  const { outOf, runFor, variance } = opts;
-  const expected = Math.floor(TEST_COUNT * (runFor / outOf));
+  const { chance, variance } = opts;
+  const expected = Math.floor(TEST_COUNT * chance);
   return actual >= (expected - variance) && actual <= (expected + variance);
 }
 
 function generateTestMessage(actual: number, opts: RunChancifyTestOptsType): string {
-  const { outOf, runFor, variance } = opts;
-  const expected = Math.floor(TEST_COUNT * (runFor / outOf));
-  const percentChance = Math.floor((runFor / outOf) * 100);
+  const { chance, variance } = opts;
+  const expected = Math.floor(TEST_COUNT * chance);
+  const percentChance = Math.floor(chance * 100);
   return `Ran ${actual} times with ${percentChance}% chance, within acceptable ${variance} of ${expected}`;
 }

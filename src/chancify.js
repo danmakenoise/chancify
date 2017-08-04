@@ -1,14 +1,6 @@
 // @flow
-type ChancifyOptsType = {
-  outOf: number,
-  runFor: number,
-};
-
-function chancify(func: Function, opts: ChancifyOptsType): Function {
-  const { outOf, runFor } = opts;
-
+function chancify(func: Function, percentChance: number): Function {
   function chancified(): void {
-    const percentChance = runFor / outOf;
     const shouldRunFunc = Math.random() <= percentChance;
 
     if (shouldRunFunc) {
