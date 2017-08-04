@@ -2,15 +2,13 @@
   "name": "chancify",
   "version": "0.1.1",
   "description": "a simple api for running javascript functions based upon percentage chance",
-  "main": "basic/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "npm run build:basic && npm run build:wrapper",
-    "build:basic": "rm -rf ./basic && mkdir ./basic && rollup -c rollup.basic.js",
-    "build:wrapper": "rm -rf ./wrapper && mkdir ./wrapper && rollup -c rollup.wrapper.js",
+    "build": "rm -rf ./dist && mkdir ./dist && rollup -c rollup.config.js",
     "lint": "eslint src/*.js",
     "prepublish": "npm run test && npm run build",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "babel-tape-runner ./src/**/*.test.js | faucet"
+    "test:unit": "babel-tape-runner ./src/*.test.js | faucet"
   },
   "repository": {
     "type": "git",

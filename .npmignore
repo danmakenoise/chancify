@@ -3,5 +3,6 @@ src
 .eslintrc
 .flowconfig
 .gitignore
+.travis.yml
 README.md
-rollup.basic.js
+rollup.config.js
