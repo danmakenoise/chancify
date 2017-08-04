@@ -10,7 +10,7 @@ const config = {
     uglify(),
   ],
   targets: [
-    { dest: './dist/chancify.js', format: 'cjs' },
+    { dest: './dist/index.js', format: 'cjs' },
   ]
 };
 

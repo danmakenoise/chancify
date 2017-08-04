@@ -1,28 +1,38 @@
-# Chancify [![Build Status](https://travis-ci.org/danmakenoise/chancify.svg?branch=master)](https://travis-ci.org/danmakenoise/chancify)
+# Chancify the Wrapper [![Build Status](https://travis-ci.org/danmakenoise/chancify.svg?branch=master)](https://travis-ci.org/danmakenoise/chancify)
 
-A simple API for running javascript functions based upon percentage chance.
+A simple API for wrapping javascript functions so they only run occasionally based upon percentage chance.
 
 
 ## Syntax
-`chancify(func, opts)`
+`chancify(func, percentChance)`
 
 
 ## Arguments
 `func` : `a function you only want to run part of the time`
 
-`opts` : `an opts object containing 'runFor' and 'outOf' properties (see below)`
+`percentChance` : `a decimal value between 0 and 1 indicating the percentage chance you would like the function to run with`
 
-## Opts
 
-`runFor` and `outOf` are semantic terms. If I would like my function to only run 2 times for every 5 times it is called I can set `runFor` to 2, and `outOf` to 5.
+## Examples
 
-## Example
 ```javascript
 const chancify = require('chancify');
 
-function foo() {
+function _foo() {
   // bar
 }
 
-chancify(foo, { runFor: 1, outOf: 10 }); // 1 in 10 chance it will actually run!
+const foo = chancify(_foo, 1 / 10);
+
+foo(); // 1 in 10 chance it will actually run!
+```
+
+```javascript
+const chancify = require('chancify');
+
+function bar() {
+  // baz
+}
+
+module.exports = chancify(bar, 50 / 100); // exported function will only run 50% of the time
 ```
